@@ -58,7 +58,6 @@ MONO_MWF_SCALING=disable
 # we now directly talk to ibus so don't even attempt to use XIM
 MONO_WINFORMS_XIM_STYLE=disabled
 # if debugging Fieldworks for performance unset DEBUG_ENABLE_PTR_VALIDATION env var.
-#DEBUG_ENABLE_PTR_VALIDATION=1
 
 export \
 	PATH LD_LIBRARY_PATH PKG_CONFIG_PATH \
@@ -67,5 +66,3 @@ export \
 	ICU_DATA \
 	MONO_PATH MONO_REGISTRY_PATH \
 	MONO_TRACE_LISTENER MONO_IOMAP MONO_MWF_SCALING MONO_WINFORMS_XIM_STYLE
-
-#DEBUG_ENABLE_PTR_VALIDATION
