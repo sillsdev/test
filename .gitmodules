@@ -2,6 +2,7 @@
 	path = lib/testsub
 	url = https://gerrit.lsdev.sil.org/testsub
 	update = rebase
+	fetchRecurseSubmodules = on-demand
 	# Name of the branch in the project repository that Gerrit Code Review
 	# should automatically refresh the project's gitlink entry from.
 	branch = .
