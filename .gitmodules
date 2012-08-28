@@ -4,7 +4,8 @@
 	update = rebase
 	# Name of the branch in the project repository that Gerrit Code Review
 	# should automatically refresh the project's gitlink entry from.
-	revision = .
+	branch = .
 [submodule "testsub2"]
 	path = testsub2
 	url = https://gerrit.lsdev.sil.org/testsub2.git
+	branch = .
