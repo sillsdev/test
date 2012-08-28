@@ -1,11 +1,11 @@
 [submodule "lib/testsub"]
 	path = lib/testsub
-	url = https://gerrit.lsdev.sil.org/testsub.git
+	url = https://gerrit.lsdev.sil.org/testsub
 	update = rebase
 	# Name of the branch in the project repository that Gerrit Code Review
 	# should automatically refresh the project's gitlink entry from.
 	branch = .
 [submodule "testsub2"]
 	path = testsub2
-	url = ssh://ebeilharz@gerrit.lsdev.sil.org:59418//testsub2
+	url = https://gerrit.lsdev.sil.org/testsub2
 	branch = .
