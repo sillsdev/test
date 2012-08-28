@@ -7,5 +7,5 @@
 	branch = .
 [submodule "testsub2"]
 	path = testsub2
-	url = ../testsub2.git
+	url = ../testsub2
 	branch = .
