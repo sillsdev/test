@@ -84,6 +84,7 @@ namespace testproject
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("Hello World!");
+			Console.WriteLine("This is a test.  This is only a test.  I repeat, this is a test.");
 		}
 	}
 }
