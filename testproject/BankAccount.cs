@@ -28,8 +28,8 @@ namespace UnitTestingExamples.Library
 
 		public void TransferFunds(BankAccount destination, double amount)
 		{
+			Withdraw(amount); // Do this first so destination balance is not changed if it fails.
 			destination.Deposit(amount);
-			Withdraw(amount);
 		}
 	}
 }

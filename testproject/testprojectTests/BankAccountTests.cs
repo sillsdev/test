@@ -45,5 +45,18 @@ namespace UnitTestingExamples.Tests
 			Assert.AreEqual(250.00, destination.Balance);
 			Assert.AreEqual(100.00, source.Balance);
 		}
+
+		[Test]
+		public void Transfer_WithInadequateBalance_ThrowsArgumentException_MakesNoChanges()
+		{
+			var source = new BankAccount();
+			source.Deposit(25.0);
+			var destination = new BankAccount();
+			destination.Deposit(100.0);
+
+			Assert.Throws<ArgumentException>(() => source.TransferFunds(destination, 50.0));
+			Assert.That(source.Balance, Is.EqualTo(25.0));
+			Assert.That(destination.Balance, Is.EqualTo(100.0));
+		}
 	}
 }
