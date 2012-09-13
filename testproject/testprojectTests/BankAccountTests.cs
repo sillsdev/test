@@ -26,6 +26,14 @@ namespace UnitTestingExamples.Tests
 		}
 
 		[Test]
+		public void WithdrawTooMuch_ThrowsArgumentException()
+		{
+			var account = new BankAccount();
+			account.Deposit(25.0);
+			Assert.Throws<ArgumentException>(() => account.Withdraw(30.0));
+		}
+
+		[Test]
 		public void TransferFunds()
 		{
 			BankAccount source = new BankAccount();
