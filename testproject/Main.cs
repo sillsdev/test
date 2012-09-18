@@ -6,21 +6,37 @@
 // </copyright>
 using System;
 
-// new comment
 // more comments
-// additional comment
+// third line with a comment
 namespace testproject
 {
+	class Base
+	{
+		public virtual int Method()
+		{
+			return 7;
+		}
+	}
+
+	class Derived: Base
+	{
+		public override int Method()
+		{
+			return 8;
+		}
+	}
+
 	/// <summary>
 	/// Main class for testing
 	/// </summary>
 	public class MainClass
 	{
 		/// <summary>
-		/// Returns a arbitrary number
+		/// Returns an arbitrary number
 		/// </summary>
 		public static int Number()
 		{
+			// a different comment in method Number()
 			return 8;
 		}
 
@@ -58,6 +74,11 @@ namespace testproject
 		public static int Three
 		{
 			get { return 3; }
+		}
+		
+		public static int New
+		{
+			get { return 5; }
 		}
 		
 		public static void Main(string[] args)
