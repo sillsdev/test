@@ -54,6 +54,14 @@ namespace testprojectTests
 		{
 			Assert.AreEqual(3, MainClass.Three);
 		}
+
+		[Test]
+		public void MightFail()
+		{
+			var jobName = Environment.GetEnvironmentVariable("JOB_NAME");
+			Console.WriteLine("jobName={0}", jobName);
+			StringAssert.DoesNotContain("Win", jobName);
+		}
 	}
 }
 
