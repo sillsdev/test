@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <IDLConversions xmlns="http://dummy.sil.org/IDLConversions.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ParamTypeConversion>
-    <Attribute>out,size_is,~retval</Attribute>
-    <NewAttribute>-out,-size_is</NewAttribute>
-    <Match>OLECHAR\s+\*\s+prgchBuf</Match>
-    <Replace>IntPtr</Replace>
+	<Attribute>out,size_is,~retval</Attribute>
+	<NewAttribute>-out,-size_is</NewAttribute>
+	<Match>OLECHAR\s+\*\s+prgchBuf</Match>
+	<Replace>IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
 		<Attribute>out,size_is,~retval</Attribute>
@@ -65,8 +65,8 @@
 		<Replace></Replace>
 		<fEnd>false</fEnd>
 	</ParamTypeConversion>
-	<!-- HANDLE_PTR is defined as unsigned long on 32b and unsigned __int64 on 64b (see Microsoft 
-		Interface Definition Language (MIDL): 64-Bit Porting Guide 
+	<!-- HANDLE_PTR is defined as unsigned long on 32b and unsigned __int64 on 64b (see Microsoft
+		Interface Definition Language (MIDL): 64-Bit Porting Guide
 		http://msdn.microsoft.com/en-us/library/ms810720.aspx).
 		In .NET a IntPtr is used for a handle. -->
 	<ParamTypeConversion>
