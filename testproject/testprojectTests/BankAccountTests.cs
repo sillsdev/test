@@ -58,5 +58,14 @@ namespace UnitTestingExamples.Tests
 			Assert.That(source.Balance, Is.EqualTo(25.0));
 			Assert.That(destination.Balance, Is.EqualTo(100.0));
 		}
+
+		[Test]
+		public void PayInterest_AddsAppropriateAmmountToBalance()
+		{
+			var source = new BankAccount();
+			source.Deposit(25.0);
+			source.PayInterest(10.0);
+			Assert.That(source.Balance, Is.EqualTo(27.5));
+		}
 	}
 }

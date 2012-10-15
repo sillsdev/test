@@ -31,5 +31,10 @@ namespace UnitTestingExamples.Library
 			Withdraw(amount); // Do this first so destination balance is not changed if it fails.
 			destination.Deposit(amount);
 		}
+
+		public void PayInterest(double percentage)
+		{
+			m_balance = Math.Round(Balance*(percentage/100.0 + 1),2);
+		}
 	}
 }
