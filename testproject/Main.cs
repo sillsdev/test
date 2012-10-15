@@ -29,7 +29,7 @@ namespace testproject
 	/// <summary>
 	/// A class to assist with conquering the universe.
 	/// </summary>
-	internal class UniverseConqueror
+	public class UniverseConqueror
 	{
 		private bool _conquered;
 
@@ -45,6 +45,11 @@ namespace testproject
 			Console.WriteLine("Congratulations, you are now in control of the entire universe!");
 
 			_conquered = true;
+		}
+
+		public bool AmIInCharge()
+		{
+			return _conquered;
 		}
 	}
 

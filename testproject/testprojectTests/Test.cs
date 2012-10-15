@@ -54,6 +54,15 @@ namespace testprojectTests
 		{
 			Assert.AreEqual(3, MainClass.Three);
 		}
+
+		[Test]
+		public void TestUniverseConqueror()
+		{
+			var conqueror = new UniverseConqueror();
+			Assert.AreEqual(false, conqueror.AmIInCharge());
+			conqueror.Go();
+			Assert.AreEqual(true, conqueror.AmIInCharge());
+		}
 	}
 }
 
