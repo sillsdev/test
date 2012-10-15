@@ -27,6 +27,28 @@ namespace testproject
 	}
 
 	/// <summary>
+	/// A class to assist with conquering the universe.
+	/// </summary>
+	internal class UniverseConqueror
+	{
+		private bool _conquered;
+
+		public void Go()
+		{
+			if (_conquered)
+				return;
+
+			Console.WriteLine("Conquering the universe - muhahahah!");
+
+			// TODO: flesh out method here.
+
+			Console.WriteLine("Congratulations, you are now in control of the entire universe!");
+
+			_conquered = true;
+		}
+	}
+
+	/// <summary>
 	/// Main class for testing
 	/// </summary>
 	public class MainClass
@@ -85,6 +107,9 @@ namespace testproject
 		{
 			Console.WriteLine("Hello World!");
 			Console.WriteLine("This is a test.  This is only a test.  I repeat, this is a test.");
+
+			var weapon = new UniverseConqueror();
+			weapon.Go();
 		}
 	}
 }
