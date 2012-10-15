@@ -111,7 +111,15 @@ namespace testproject
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("Hello World!");
-			Console.WriteLine("This is a test.  This is only a test.  I repeat, this is a test.");
+			Console.WriteLine("This is a test.  This is only a test.  I repeat, this is a test!");
+			var baseObj = new Base();
+			var derivedObj = new Derived();
+			Console.WriteLine("Base.Method() = {0}, but Derived.Method() = {1}.", baseObj.Method(), derivedObj.Method());
+			var acct = new UnitTestingExamples.Library.BankAccount();
+			acct.Deposit(1000000.00);
+			acct.Withdraw(999999.99);
+			Console.WriteLine("Account balance = ${0}.", acct.Balance);
+			Console.WriteLine("(Now you know why banks don't use floating point arithmetic!)");
 
 			var weapon = new UniverseConqueror();
 			weapon.Go();
