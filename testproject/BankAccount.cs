@@ -22,7 +22,7 @@ namespace UnitTestingExamples.Library
 		public void Withdraw(double amount)
 		{
 			if (m_balance - amount < 0)
-				throw new ArgumentException(string.Format("Withdrawal amount {0} exceeds balance {1}", amount, m_balance));
+				throw new ApplicationException(string.Format("Withdrawal amount {0} exceeds balance {1}", amount, m_balance));
 			m_balance -= amount;
 		}
 

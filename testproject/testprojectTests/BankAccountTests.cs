@@ -26,11 +26,11 @@ namespace UnitTestingExamples.Tests
 		}
 
 		[Test]
-		public void WithdrawTooMuch_ThrowsArgumentException()
+		public void WithdrawTooMuch_ThrowsApplicationException()
 		{
 			var account = new BankAccount();
 			account.Deposit(25.0);
-			Assert.Throws<ArgumentException>(() => account.Withdraw(30.0));
+			Assert.Throws<ApplicationException>(() => account.Withdraw(30.0));
 		}
 
 		[Test]
@@ -54,7 +54,7 @@ namespace UnitTestingExamples.Tests
 			var destination = new BankAccount();
 			destination.Deposit(100.0);
 
-			Assert.Throws<ArgumentException>(() => source.TransferFunds(destination, 50.0));
+			Assert.Throws<ApplicationException>(() => source.TransferFunds(destination, 50.0));
 			Assert.That(source.Balance, Is.EqualTo(25.0));
 			Assert.That(destination.Balance, Is.EqualTo(100.0));
 		}
