@@ -111,6 +111,7 @@ namespace testproject
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("Hello World!");
+			Console.WriteLine("This line of text is designed to conflict with Alistair's other branch.");
 			Console.WriteLine("Alistair inserted this line as part of an experiment.");
 			Console.WriteLine("This is a test.  This is only a test.  I repeat, this is a test!");
 			var baseObj = new Base();
