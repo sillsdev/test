@@ -26,7 +26,7 @@ namespace UnitTestingExamples.Tests
 		}
 
 		[Test]
-		public void WithdrawTooMuch_ThrowsOneApplicationException()
+		public void ExcessiveWithdrawal_ThrowsOneApplicationException()
 		{
 			var account = new BankAccount();
 			account.Deposit(25.0);
