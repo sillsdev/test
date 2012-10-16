@@ -26,11 +26,12 @@ namespace UnitTestingExamples.Tests
 		}
 
 		[Test]
-		public void WithdrawTooMuch_ThrowsApplicationException()
+		public void WithdrawTooMuch_ThrowsOneApplicationException()
 		{
 			var account = new BankAccount();
 			account.Deposit(25.0);
 			Assert.Throws<ApplicationException>(() => account.Withdraw(30.0));
+			Assert.AreEqual(0, 0);
 		}
 
 		[Test]
