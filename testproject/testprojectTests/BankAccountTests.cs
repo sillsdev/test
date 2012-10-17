@@ -13,7 +13,7 @@ namespace UnitTestingExamples.Tests
 			BankAccount account = new BankAccount();
 			account.Deposit(125.0);
 			account.Deposit(25.0);
-			Assert.AreEqual(150.0, account.Balance);
+			Assert.AreEqual(150.0, account.Balance);//change something in here.
 		}
 
 		[Test]
@@ -22,7 +22,8 @@ namespace UnitTestingExamples.Tests
 			BankAccount account = new BankAccount();
 			account.Deposit(125.0);
 			account.Withdraw(25.0);
-			Assert.AreEqual(100.0, account.Balance);
+			account.Withdraw(50.0);//make a change
+			Assert.AreEqual(50.0, account.Balance);
 		}
 
 		[Test]

@@ -6,8 +6,8 @@
 // </copyright>
 using System;
 
-// more comments
 // third line with a comment
+// comment in here.
 namespace testproject
 {
 	class Base
