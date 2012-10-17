@@ -15,15 +15,26 @@ namespace UnitTestingExamples.Library
 		}
 
 		public int NumberOfTransactions { get { return m_transactionList.Count; } }
+
+		public List<Transaction> TransactionLog
+		{
+			get { return m_transactionList; }
+		}
+
+		public void AddTransaction(TransType deposit, double amount)
+		{
+			var trans = new Transaction() {TransactionType = TransType.Deposit, Amount = amount};
+			m_transactionList.Add(trans);
+		}
 	}
 
 	public class Transaction
 	{
-		public TransTypeEnum TransType { get; set; }
+		public TransType TransactionType { get; set; }
 		public double Amount { get; set; }
 	}
 
-	public enum TransTypeEnum
+	public enum TransType
 	{
 		Deposit,
 		Withdrawal,
