@@ -4,9 +4,9 @@
    Creates a text summary for NUnit tests
 -->
 
-<xsl:stylesheet version="1.0" 
-      xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-      xmlns:html="http://www.w3.org/Profiles/XHTML-transitional"
+<xsl:stylesheet version="1.0"
+	  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	  xmlns:html="http://www.w3.org/Profiles/XHTML-transitional"
    >
 
    <xsl:output method="text" indent="yes" />
@@ -48,19 +48,19 @@
 	<xsl:value-of select="floor($timeCount div 60)"/>m<xsl:text> </xsl:text>
 	<xsl:value-of select="floor($timeCount mod 60)"/>s)
 </xsl:template>
-	
+
 	<xsl:template match="test-case" mode="textFailed">
 		<xsl:value-of select="@name"/><xsl:text>
 		</xsl:text>
 	</xsl:template>
-	
+
 	<xsl:template match="test-case" mode="textIgnored">
 		<xsl:value-of select="@name"/><xsl:text> (</xsl:text>
 		<xsl:value-of select="reason/message"/>
 		<xsl:text>)
 		</xsl:text>
 	</xsl:template>
-	
+
 	<xsl:template name="format-number">
 		<xsl:param name="number"/>
 		<xsl:param name="length"/>

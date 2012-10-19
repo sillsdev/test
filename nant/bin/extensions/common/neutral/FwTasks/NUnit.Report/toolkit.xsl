@@ -24,8 +24,8 @@
 -->
 
 <!--
-    format a number in to display its value in percent
-    @param value the number to format
+	format a number in to display its value in percent
+	@param value the number to format
 -->
 <xsl:template name="display-time">
 	<xsl:param name="value"/>
@@ -33,8 +33,8 @@
 </xsl:template>
 
 <!--
-    format a number in to display its value in percent
-    @param value the number to format
+	format a number in to display its value in percent
+	@param value the number to format
 -->
 <xsl:template name="display-percent">
 	<xsl:param name="value"/>
@@ -42,20 +42,20 @@
 </xsl:template>
 
 <!--
-    transform string like a.b.c to ../../../
-    @param path the path to transform into a descending directory path
+	transform string like a.b.c to ../../../
+	@param path the path to transform into a descending directory path
 -->
 <xsl:template name="path">
 	<xsl:param name="path"/>
 	<xsl:if test="contains($path,'.')">
-		<xsl:text>../</xsl:text>	
+		<xsl:text>../</xsl:text>
 		<xsl:call-template name="path">
 			<xsl:with-param name="path"><xsl:value-of select="substring-after($path,'.')"/></xsl:with-param>
-		</xsl:call-template>	
+		</xsl:call-template>
 	</xsl:if>
 	<xsl:if test="not(contains($path,'.')) and not($path = '')">
-		<xsl:text>../</xsl:text>	
-	</xsl:if>	
+		<xsl:text>../</xsl:text>
+	</xsl:if>
 </xsl:template>
 
 <!--
@@ -79,7 +79,7 @@
 </xsl:template>
 
 
-<!-- 
+<!--
 		=====================================================================
 		classes summary header
 		=====================================================================
@@ -90,11 +90,11 @@
 	<table width="100%">
 	<tr>
 	   <td align="left">
-	      Generated: <xsl:value-of select="@created"/> -
-	      <a href="#envinfo">Environment Information</a>
+		  Generated: <xsl:value-of select="@created"/> -
+		  <a href="#envinfo">Environment Information</a>
 	   </td>
-		<td align="right">Designed for use with 
-		   <a href='http://nunit.sourceforge.net/'>NUnit</a> and 
+		<td align="right">Designed for use with
+		   <a href='http://nunit.sourceforge.net/'>NUnit</a> and
 		   <a href='http://nant.sourceforge.net/'>NAnt</a>.
 		</td>
 	</tr>
@@ -114,7 +114,7 @@
 	</thead>
 </xsl:template>
 
-<!-- 
+<!--
 		=====================================================================
 		package summary header
 		=====================================================================
@@ -131,7 +131,7 @@
 	</thead>
 </xsl:template>
 
-<!-- 
+<!--
 		=====================================================================
 		classes summary header
 		=====================================================================
@@ -146,7 +146,7 @@
 	</thead>
 </xsl:template>
 
-<!-- 
+<!--
 		=====================================================================
 		Write the summary report
 		It creates a table with computed values from the document:
@@ -161,37 +161,37 @@
 		<xsl:variable name="failureCount" select="sum(//test-results/@failures) + sum(//test-results/@errors)"/>
 		<xsl:variable name="timeCount" select="sum(//test-results/test-suite/@time)"/>
 		<xsl:variable name="successRate" select="($testCount - $failureCount - $ignoredCount) div $testCount"/>
-		
+
 		<table border="0" class="DetailTable" width="95%">
 		<xsl:call-template name="summaryHeader"/>
 		<tr valign="top">
 			<xsl:attribute name="class">
-    			<xsl:choose>
-    			    <xsl:when test="$failureCount &gt; 0">Failure</xsl:when>
-    				<xsl:when test="$ignoredCount &gt; 0">Ignored</xsl:when>
-    				<xsl:otherwise>Pass</xsl:otherwise>
-    			</xsl:choose>			
-			</xsl:attribute>		
+				<xsl:choose>
+					<xsl:when test="$failureCount &gt; 0">Failure</xsl:when>
+					<xsl:when test="$ignoredCount &gt; 0">Ignored</xsl:when>
+					<xsl:otherwise>Pass</xsl:otherwise>
+				</xsl:choose>
+			</xsl:attribute>
 			<td><xsl:value-of select="$testCount"/></td>
 			<td><xsl:value-of select="$failureCount"/></td>
 			<td><xsl:value-of select="$ignoredCount"/></td>
 			<td>
-			    <xsl:call-template name="display-percent">
-			        <xsl:with-param name="value" select="$successRate"/>
-			    </xsl:call-template>
+				<xsl:call-template name="display-percent">
+					<xsl:with-param name="value" select="$successRate"/>
+				</xsl:call-template>
 			</td>
 			<td>
-			    <xsl:call-template name="display-time">
-			        <xsl:with-param name="value" select="$timeCount"/>
-			    </xsl:call-template> (<xsl:value-of select="floor($timeCount div 3600)"/> h 
-			    <xsl:value-of select="floor($timeCount div 60)"/> m 
-			    <xsl:value-of select="floor($timeCount mod 60)"/> s)
+				<xsl:call-template name="display-time">
+					<xsl:with-param name="value" select="$timeCount"/>
+				</xsl:call-template> (<xsl:value-of select="floor($timeCount div 3600)"/> h
+				<xsl:value-of select="floor($timeCount div 60)"/> m
+				<xsl:value-of select="floor($timeCount mod 60)"/> s)
 			</td>
 		</tr>
 		</table>
 	</xsl:template>
 
-<!-- 
+<!--
 		=====================================================================
 		test-case report
 		=====================================================================
@@ -199,7 +199,7 @@
 <xsl:template match="test-case">
    <xsl:variable name="result">
 			<xsl:choose>
-		      <xsl:when test="contains(@success, 'False')">Failure</xsl:when>
+			  <xsl:when test="contains(@success, 'False')">Failure</xsl:when>
 				<xsl:when test="contains(@executed, 'False')">Ignored</xsl:when>
 				<xsl:otherwise>Pass</xsl:otherwise>
 			</xsl:choose>
@@ -208,35 +208,35 @@
 	<TR valign="top">
 		<xsl:attribute name="class"><xsl:value-of select="$result"/></xsl:attribute>
 	   <xsl:if test="$result != &quot;Pass&quot;">
-	      <xsl:attribute name="onclick">javascript:toggle(<xsl:value-of select="$newid"/>)</xsl:attribute>
-	      <xsl:attribute name="style">cursor: hand;</xsl:attribute>
+		  <xsl:attribute name="onclick">javascript:toggle(<xsl:value-of select="$newid"/>)</xsl:attribute>
+		  <xsl:attribute name="style">cursor: hand;</xsl:attribute>
 	   </xsl:if>
-		
+
 		<TD><xsl:value-of select="@name"/><br/>
 			<xsl:if test="$result != &quot;Pass&quot;">
 			<table width="100%">
 	   <tr style="display: block;">
-	      <xsl:attribute name="id">
-	         <xsl:value-of select="$newid"/>
-	      </xsl:attribute>
-	      <td colspan="3" class="FailureDetail">
-	         <xsl:apply-templates select="reason"/>
-	         <xsl:apply-templates select="failure"/>
-         </td>	      
-      </tr></table>
+		  <xsl:attribute name="id">
+			 <xsl:value-of select="$newid"/>
+		  </xsl:attribute>
+		  <td colspan="3" class="FailureDetail">
+			 <xsl:apply-templates select="reason"/>
+			 <xsl:apply-templates select="failure"/>
+		 </td>
+	  </tr></table>
 	</xsl:if>
 	</TD>
 		<td><xsl:value-of select="$result"/></td>
 		<td>
-		    <xsl:call-template name="display-time">
-		        <xsl:with-param name="value" select="@time"/>
-		    </xsl:call-template>				
+			<xsl:call-template name="display-time">
+				<xsl:with-param name="value" select="@time"/>
+			</xsl:call-template>
 		</td>
 	</TR>
 </xsl:template>
 
 <!-- Note : the below template error and failure are the same style
-            so just call the same style store in the toolkit template -->
+			so just call the same style store in the toolkit template -->
 <xsl:template match="failure">
 	<xsl:choose>
 		<xsl:when test="not(message)">N/A</xsl:when>
@@ -263,7 +263,7 @@
 </xsl:template>
 
 
-<!-- 
+<!--
 		=====================================================================
 		Environtment Info Report
 		=====================================================================
@@ -273,8 +273,8 @@
 	<h2>Environment Information</h2>
 	<table border="0" class="DetailTable" width="95%">
 	   <tr class="EnvInfoHeader">
-	      <td>Property</td>
-	      <td>Value</td>
+		  <td>Property</td>
+		  <td>Value</td>
 	   </tr>
 		<tr class="EnvInfoRow">
 			<td>NUnit Version</td>
@@ -283,35 +283,35 @@
 			</td>
 		</tr>
 		<tr class="EnvInfoRow">
-	      <td>NAnt Location</td>
-	      <td><xsl:value-of select="$nant.filename"/></td>
+		  <td>NAnt Location</td>
+		  <td><xsl:value-of select="$nant.filename"/></td>
 	   </tr>
 	   <tr class="EnvInfoRow">
-	      <td>NAnt Version</td>
-	      <td><xsl:value-of select="$nant.version"/></td>
+		  <td>NAnt Version</td>
+		  <td><xsl:value-of select="$nant.version"/></td>
 	   </tr>
 	   <tr class="EnvInfoRow">
-	      <td>Buildfile</td>
-	      <td><xsl:value-of select="$nant.project.buildfile"/></td>
+		  <td>Buildfile</td>
+		  <td><xsl:value-of select="$nant.project.buildfile"/></td>
 	   </tr>
 	   <tr class="EnvInfoRow">
-	      <td>Base Directory</td>
-	      <td><xsl:value-of select="$nant.project.basedir"/></td>
+		  <td>Base Directory</td>
+		  <td><xsl:value-of select="$nant.project.basedir"/></td>
 	   </tr>
 	   <tr class="EnvInfoRow">
-	      <td>Operating System</td>
-	      <td><xsl:value-of select="$sys.os"/></td>
-<!--	
-      If this doesn't look right, your version of NAnt
-      has a broken sysinfo task...
-	      <td><xsl:value-of select="$sys.os.platform"/> - <xsl:value-of select="$sys.os.version"/></td>
-      or
-	      <td><xsl:value-of select="$sys.os.version"/></td>
--->	      
+		  <td>Operating System</td>
+		  <td><xsl:value-of select="$sys.os"/></td>
+<!--
+	  If this doesn't look right, your version of NAnt
+	  has a broken sysinfo task...
+		  <td><xsl:value-of select="$sys.os.platform"/> - <xsl:value-of select="$sys.os.version"/></td>
+	  or
+		  <td><xsl:value-of select="$sys.os.version"/></td>
+-->
 	   </tr>
 	   <tr class="EnvInfoRow">
-	      <td>.NET CLR Version</td>
-	      <td><xsl:value-of select="$sys.clr.version"/></td>
+		  <td>.NET CLR Version</td>
+		  <td><xsl:value-of select="$sys.clr.version"/></td>
 	   </tr>
 		<tr class="EnvInfoRow">
 			<td>Current Culture</td>
@@ -325,7 +325,7 @@
 				<xsl:value-of select="//culture-info/@current-uiculture"/>
 			</td>
 		</tr>
-	</table>	
+	</table>
 	<a href="#top">Back to top</a>
 </xsl:template>
 

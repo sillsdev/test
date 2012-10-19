@@ -5,7 +5,7 @@
 //
 // global variables
 //
-var tbody=null;					
+var tbody=null;
 var theadrow=null;
 var colCount = null;
 
@@ -23,19 +23,19 @@ function init() {
 	tbody = element.tBodies(0);
 	if (!tbody) return;
 
-	//Get THEAD  
+	//Get THEAD
 	var thead = element.tHead;
 	if (!thead)  return;
-	
+
 	theadrow = thead.children[0]; //Assume just one Head row
 	if (theadrow.tagName != "TR") return;
 
 	theadrow.runtimeStyle.cursor = "hand";
 
 	colCount = theadrow.children.length;
-  
+
 	var l, clickCell;
-	for (var i=0; i<colCount; i++) 
+	for (var i=0; i<colCount; i++)
 	{
 		// Create our blank gif
 		l=document.createElement("IMG");
@@ -54,21 +54,21 @@ function init() {
 
 //
 // doClick handler
-// 
 //
-function doClick(e) 
+//
+function doClick(e)
 {
 	var clickObject = e.srcElement;
 
-	while (clickObject.tagName != "TD") 
+	while (clickObject.tagName != "TD")
 	{
 		clickObject = clickObject.parentElement;
 	}
 
-	
+
 	// clear the sort images in the head
 	var imgcol= theadrow.all('srtimg');
-	for(var x = 0; x < imgcol.length; x++) 
+	for(var x = 0; x < imgcol.length; x++)
 		imgcol[x].src = "dude07232001blank.gif";
 
 	if(lastclick == clickObject.selectIndex)
@@ -76,9 +76,9 @@ function doClick(e)
 		if(reverse == false)
 		{
 			clickObject.children[0].src = "dude07232001down.gif";
-		      reverse = true;
+			  reverse = true;
 		}
-		else 
+		else
 		{
 			clickObject.children[0].src = "dude07232001up.gif";
 			reverse = false;
@@ -96,31 +96,31 @@ function doClick(e)
 
 function insertionSort(t, iRowEnd, fReverse, iColumn)
 {
-    var iRowInsertRow, iRowWalkRow, current, insert;
-    for ( iRowInsert = 0 + 1 ; iRowInsert <= iRowEnd ; iRowInsert++ )
-    {
-        if (iColumn) 
-        {	
+	var iRowInsertRow, iRowWalkRow, current, insert;
+	for ( iRowInsert = 0 + 1 ; iRowInsert <= iRowEnd ; iRowInsert++ )
+	{
+		if (iColumn)
+		{
 			if( typeof(t.rows[iRowInsert].children[iColumn]) != "undefined")
-   				textRowInsert = t.rows[iRowInsert].children[iColumn].innerText;
+				textRowInsert = t.rows[iRowInsert].children[iColumn].innerText;
 			else
 				textRowInsert = "";
-        } 
-        else 
-        {
-           textRowInsert = t.rows[iRowInsert].innerText;
-        }
-		
-        for ( iRowWalk = 0; iRowWalk <= iRowInsert ; iRowWalk++ )
-        {
-            if (iColumn) {
+		}
+		else
+		{
+		   textRowInsert = t.rows[iRowInsert].innerText;
+		}
+
+		for ( iRowWalk = 0; iRowWalk <= iRowInsert ; iRowWalk++ )
+		{
+			if (iColumn) {
 			if(typeof(t.rows[iRowWalk].children[iColumn]) != "undefined")
 				textRowCurrent = t.rows[iRowWalk].children[iColumn].innerText;
 			else
 				textRowCurrent = "";
-            } else {
+			} else {
 			textRowCurrent = t.rows[iRowWalk].innerText;
-            }
+			}
 
 			//
 			// We save our values so we can manipulate the numbers for
@@ -130,7 +130,7 @@ function insertionSort(t, iRowEnd, fReverse, iColumn)
 			insert  = textRowInsert;
 
 
-			//  If both values are not numbers, we sort normally, else we evaluate	
+			//  If both values are not numbers, we sort normally, else we evaluate
 			//  the value to get a numeric representation. If one of the two values
 			//  is not a number we replace it with 0.
 			//
@@ -150,17 +150,17 @@ function insertionSort(t, iRowEnd, fReverse, iColumn)
 					insert = insert.toLowerCase();
 			}
 
-            if ( (   (!fReverse && insert < current)
-                 || ( fReverse && insert > current) )
-                 && (iRowInsert != iRowWalk) )
-            {
+			if ( (   (!fReverse && insert < current)
+				 || ( fReverse && insert > current) )
+				 && (iRowInsert != iRowWalk) )
+			{
 				eRowInsert = t.rows[iRowInsert];
-                eRowWalk = t.rows[iRowWalk];
-                t.insertBefore(eRowInsert, eRowWalk);
-                iRowWalk = iRowInsert; // done
-            }
-        }
-    }
+				eRowWalk = t.rows[iRowWalk];
+				t.insertBefore(eRowInsert, eRowWalk);
+				iRowWalk = iRowInsert; // done
+			}
+		}
+	}
 }
 
 </script>

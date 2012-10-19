@@ -29,7 +29,11 @@
 			from="Gendarme.Rules.Portability.dll" />
 		<rules include="EnsureDebugDisposeFinalizerRule | EnsureDebugDisposeMissDispStatementRule" from="FwGendarmeRules.dll"/>
 	</ruleset>
-	
+
+	<!-- Don't check for anything in a release build. -->
+	<ruleset name="dispose-release">
+	</ruleset>
+
 	<ruleset name="portability">
 		<!-- TODO: write rule that checks for Windows paths. Unix paths work ok -->
 		<rules include="ExitCodeIsLimitedOnUnixRule | DoNotHardcodePathsRule | FeatureRequiresRootPrivilegeOnUnixRule | MonoCompatibilityReviewRule | NewLineLiteralRule"
