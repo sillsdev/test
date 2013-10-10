@@ -1,0 +1,50 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask TaskName="NUnit" AssemblyFile="$(RootDir)/build/FwBuildTasks.dll"/>
+
+	<PropertyGroup>
+		<Solution>testproject/testproject.sln</Solution>
+		<ApplicationName>TestProject</ApplicationName>
+		<Configuration>Debug</Configuration>
+		<SolutionDir>$(RootDir)</SolutionDir>
+	</PropertyGroup>
+
+	<Target Name="Build">
+		<CallTarget Targets="Clean"/>
+		<CallTarget Targets="Compile"/>
+		<Message Text="Build Complete"/>
+	</Target>
+
+	<ItemGroup>
+		<ExistingObjectFiles
+			Include="$(RootDir)/**/obj/**/*;$(RootDir)/output/$(Configuration)/**/*"
+			Exclude="$(RootDir)/.hg/**/*;$(RootDir)/.git/**/*"
+		/>
+	</ItemGroup>
+
+	<Target Name="Clean">
+		<Delete Files="@(ExistingObjectFiles)" />
+	</Target>
+
+	<Target Name="Compile">
+		<MSBuild
+			Projects="$(RootDir)/$(Solution)"
+			Targets="Build"
+			Properties="Configuration=$(Configuration)" />
+	</Target>
+
+	<Target Name="Test" DependsOnTargets="Build">
+		<CreateItem Include="$(RootDir)/Output_/$(Configuration)/*Tests.dll">
+			<Output ItemName="TestAssemblies" TaskParameter="Include" />
+		</CreateItem>
+		<Message Text="About to run tests"/>
+		  <Message Text="Excluded categories: $(excludedCategories)"/>
+		<NUnit
+			Assemblies="@(TestAssemblies)"
+			ToolPath="$(RootDir)/nunit"
+			WorkingDirectory="$(RootDir)/Output_/$(Configuration)/"
+			OutputXmlFile="$(RootDir)/Output_/$(Configuration)/NUnitTest-output.xml"
+			Force32Bit="true"
+			ExcludeCategory="SkipOnTeamCity,$(excludedCategories)"/>
+	</Target>
+
+</Project>
