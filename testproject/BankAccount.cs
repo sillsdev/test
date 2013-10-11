@@ -11,7 +11,7 @@ namespace UnitTestingExamples.Library
 
 		public void Deposit(double amount)
 		{
-			m_balance += amountx;
+			m_balance += amount;
 		}
 
 		public double Balance
